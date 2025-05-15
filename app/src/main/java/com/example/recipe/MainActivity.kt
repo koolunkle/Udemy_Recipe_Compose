@@ -17,7 +17,10 @@ class MainActivity : ComponentActivity() {
         setContent {
             RecipeTheme {
                 Scaffold(modifier = Modifier.fillMaxSize()) { innerPadding ->
-                    RecipeScreen(modifier = Modifier.padding(innerPadding))
+                    RecipeScreen(
+                        navigateToDetail = {},
+                        modifier = Modifier.padding(innerPadding)
+                    )
                 }
             }
         }
