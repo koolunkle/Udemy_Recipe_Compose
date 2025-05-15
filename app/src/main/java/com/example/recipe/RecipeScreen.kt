@@ -13,24 +13,20 @@ import androidx.compose.foundation.lazy.grid.items
 import androidx.compose.material3.CircularProgressIndicator
 import androidx.compose.material3.Text
 import androidx.compose.runtime.Composable
-import androidx.compose.runtime.getValue
 import androidx.compose.ui.Alignment
 import androidx.compose.ui.Modifier
 import androidx.compose.ui.graphics.Color
 import androidx.compose.ui.text.TextStyle
 import androidx.compose.ui.text.font.FontWeight
 import androidx.compose.ui.unit.dp
-import androidx.lifecycle.viewmodel.compose.viewModel
 import coil.compose.rememberAsyncImagePainter
 
 @Composable
 fun RecipeScreen(
+    viewState: MainViewModel.RecipeState,
     navigateToDetail: (Category) -> Unit,
     modifier: Modifier = Modifier,
 ) {
-    val viewModel: MainViewModel = viewModel()
-    val viewState by viewModel.categoriesState
-
     Box(modifier = modifier.fillMaxSize()) {
         when {
             viewState.loading -> {
@@ -49,7 +45,7 @@ fun RecipeScreen(
                 // Display Categories
                 CategoryScreen(
                     categories = viewState.list,
-                    navigateToDetail = {}
+                    navigateToDetail = { navigateToDetail(it) },
                 )
             }
         }

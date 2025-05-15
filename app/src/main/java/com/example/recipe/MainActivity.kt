@@ -8,6 +8,7 @@ import androidx.compose.foundation.layout.fillMaxSize
 import androidx.compose.foundation.layout.padding
 import androidx.compose.material3.Scaffold
 import androidx.compose.ui.Modifier
+import androidx.navigation.compose.rememberNavController
 import com.example.recipe.ui.theme.RecipeTheme
 
 class MainActivity : ComponentActivity() {
@@ -17,8 +18,8 @@ class MainActivity : ComponentActivity() {
         setContent {
             RecipeTheme {
                 Scaffold(modifier = Modifier.fillMaxSize()) { innerPadding ->
-                    RecipeScreen(
-                        navigateToDetail = {},
+                    RecipeApp(
+                        navController = rememberNavController(),
                         modifier = Modifier.padding(innerPadding)
                     )
                 }
